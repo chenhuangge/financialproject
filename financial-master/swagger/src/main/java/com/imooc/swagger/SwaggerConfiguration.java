@@ -30,6 +30,7 @@ public class SwaggerConfiguration {
         Docket docket = new Docket(DocumentationType.SWAGGER_2)
                 .groupName(swaggerInfo.getGroupName())
                 .apiInfo(apiInfo());
+        //添加限制.select().apis条件或.paths()，来筛选包或者暴露出去的功能
         ApiSelectorBuilder builder = docket.select();
         if (!StringUtils.isEmpty(swaggerInfo.getBasePackage())) {
             builder = builder.apis(RequestHandlerSelectors.basePackage(swaggerInfo.getBasePackage()));
